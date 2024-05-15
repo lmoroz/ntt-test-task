@@ -12,8 +12,8 @@ package main
 import (
 	"log"
 	"net/http"
-	
-	sw "github.com/lmoroz/ntt-test-task/tree/main/go-server/go"
+
+	sw "github.com/lmoroz/ntt-test-task/go-server/go"
 )
 
 func main() {
