@@ -29,7 +29,7 @@ services:
     restart: unless-stopped
     build:
       context: .
-      dockerfile: ntt-test-task-go-server/Dockerfile
+      dockerfile: backend/Dockerfile
     ports:
       - "${SERVER_PORT}:${SERVER_PORT}"
     environment:

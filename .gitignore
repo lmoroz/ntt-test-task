@@ -1,4 +1,4 @@
 .env
-/ntt-test-task-go-server/.swagger-codegen-ignore
-/ntt-test-task-go-server/.swagger-codegen
-/ntt-test-task-go-server/tmp
+/backend/.swagger-codegen-ignore
+/backend/.swagger-codegen
+/backend/tmp

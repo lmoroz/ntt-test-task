@@ -1,8 +1,8 @@
 FROM golang:1.22 AS build
 WORKDIR /go/src
-COPY ntt-test-task-go-server/go ./go
-COPY ntt-test-task-go-server/main.go .
-COPY ntt-test-task-go-server/go.mod .
+COPY backend/go ./go
+COPY backend/main.go .
+COPY backend/go.mod .
 
 ENV CGO_ENABLED=0
 RUN go mod tidy
