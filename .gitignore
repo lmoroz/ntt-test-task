@@ -1,0 +1,4 @@
+.env
+/ntt-test-task-go-server/.swagger-codegen-ignore
+/ntt-test-task-go-server/.swagger-codegen
+/ntt-test-task-go-server/tmp
