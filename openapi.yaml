@@ -92,6 +92,7 @@ components:
         - parent_id
         - name
         - description
+        - has_nested
       properties:
         id:
           type: integer
@@ -103,5 +104,7 @@ components:
           type: string
         description:
           type: string
+        has_nested:
+          type: boolean
       xml:
         name: address
