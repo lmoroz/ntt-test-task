@@ -106,5 +106,4 @@ components:
           type: string
         has_nested:
           type: boolean
-      xml:
-        name: address
+
