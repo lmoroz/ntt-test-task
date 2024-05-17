@@ -1,0 +1,78 @@
+{
+  "root": true,
+  "env": {
+    "node": true,
+    "browser": true,
+    "es2021": true,
+    "jest": true,
+    "vue/setup-compiler-macros": true
+  },
+  "extends": [
+    "plugin:vue/vue3-recommended",
+    "eslint:recommended",
+    "@vue/typescript/recommended",
+    "plugin:prettier/recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "plugins": [
+    "@typescript-eslint"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": 2020,
+    "sourceType": "module",
+    "project": [
+      "./tsconfig.*?.json"
+    ]
+  },
+  "overrides": [
+    {
+      "files": ["*.vue"],
+      "parser": "vue-eslint-parser",
+      "parserOptions": {
+        "project": "./tsconfig.json"
+      }
+    },
+    {
+      "files": [
+        "*.config.js",
+        "build/*.js"
+      ],
+      "env": {
+        "node": true
+      },
+      "rules": {
+        "unicorn/prefer-module": "off"
+      }
+    }
+  ],
+  "ignorePatterns": [
+    "node_modules",
+    "build"
+  ],
+  "rules": {
+    "arrow-body-style": "off",
+    "unicorn/prefer-spread": "off",
+    "unicorn/no-useless-undefined": "off",
+    "unicorn/empty-brace-spaces": "off",
+    "unicorn/no-array-callback-reference": "off",
+    "unicorn/numeric-separators-style": "off",
+    "unicorn/no-abusive-eslint-disable": "off",
+    "prettier/prettier": "error",
+    "prefer-arrow-callback": [
+      "error",
+      {
+        "allowNamedFunctions": true
+      }
+    ],
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-use-before-define": "off",
+    "@typescript-eslint/no-unused-vars": [
+      "off"
+    ],
+    "@typescript-eslint/no-inferrable-types": "off",
+    "@typescript-eslint/no-empty-function": "off",
+    "@typescript-eslint/ban-ts-comment": "off",
+    "no-console": "error"
+  }
+}
