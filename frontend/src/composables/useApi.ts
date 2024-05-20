@@ -8,11 +8,16 @@ const apiState: ApiState = reactive({
 });
 
 export function useApi() {
+  const apiHost = import.meta.env.VITE_API_SERVER_HOST;
+  const apiPort = import.meta.env.VITE_API_SERVER_PORT;
+  const baseURL = `http://${apiHost}:${apiPort}/api/v3`;
+
+  const axiosInstance = axios.create({ baseURL: baseURL });
   const getFolderInfoByPath = async (path: string) => {
     apiState.loading = true;
     apiState.error = null;
     try {
-      const response = await axios.post('http://localhost:8080/api/v3/folder/get', {
+      const response = await axiosInstance.post(`/folder/get`, {
         path,
       } as FoldersGetBody);
       apiState.apiData = response.data as FolderInfo;
@@ -32,7 +37,7 @@ export function useApi() {
     apiState.loading = true;
     apiState.error = null;
     try {
-      const response = await axios.post('http://localhost:8080/api/v3/folders/get', {
+      const response = await axiosInstance.post(`/folders/get`, {
         path,
       } as FoldersGetBody);
       apiState.apiData = response.data as NestedFolders;

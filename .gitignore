@@ -1,6 +1,11 @@
+.idea
+.vscode
+
 .env
 /backend/.swagger-codegen-ignore
 /backend/.swagger-codegen
 /backend/tmp
+
 /frontend/node_modules
 /frontend/.vscode
+/frontend/dist

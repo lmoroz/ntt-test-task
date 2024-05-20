@@ -7,9 +7,9 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
-    FolderItem: typeof import('./src/components/molecules/FolderItem.vue')['default'];
-    FoldersTree: typeof import('./src/components/atoms/FoldersTree.vue')['default'];
-    FoldersTreeWrapper: typeof import('./src/components/molecules/FoldersTreeWrapper.vue')['default'];
-    FormController: typeof import('./src/components/organisms/FormController.vue')['default'];
+    FolderItem: typeof import('./src/components/molecules/FolderItem.vue')['default']
+    FoldersTree: typeof import('./src/components/atoms/FoldersTree.vue')['default']
+    FoldersTreeWrapper: typeof import('./src/components/molecules/FoldersTreeWrapper.vue')['default']
+    FormController: typeof import('./src/components/organisms/FormController.vue')['default']
   }
 }

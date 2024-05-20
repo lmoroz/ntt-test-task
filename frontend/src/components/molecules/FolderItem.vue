@@ -45,7 +45,7 @@ const tree = computed<NestedFolders>(
   () =>
     fullTree.value.filter((item: FolderInfo) => item.parent_id === props.data.id) as NestedFolders
 );
-const showTree = computed<boolean>(() => tree.value.length > 0 && props.data.is_open);
+const showTree = computed<boolean | null>(() => tree.value.length > 0 && props.data.is_open);
 const openCloseMe = async () => {
   if (props.data.has_nested) {
     loading.value = true;

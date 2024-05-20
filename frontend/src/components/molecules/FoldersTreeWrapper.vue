@@ -58,9 +58,7 @@
         </div>
         <div class="d-flex justify-start ga-2">
           <v-btn :disabled="!hasSelected" @click="setPathFromSelected">ОК</v-btn>
-          <v-btn :disabled="!hasNotLoadedOrNotOpen" :loading="apiState.loading" @click="openAll"
-            >Раскрыть все</v-btn
-          >
+          <v-btn :disabled="true" :loading="apiState.loading" @click="openAll">Раскрыть все</v-btn>
           <v-btn @click="close">Закрыть</v-btn>
         </div>
       </template>
@@ -85,12 +83,12 @@ const tree = computed<NestedFolders>(() =>
 );
 const emit = defineEmits<{ close: []; openAll: [] }>();
 const hasSelected = computed<boolean>(() => state.selectedFolder !== null);
-const hasNotLoadedOrNotOpen = computed<boolean>(
-  () =>
-    fullTree.value.findIndex(
-      (folder: FolderInfo) => folder.has_nested && (!folder.loaded || !folder.is_open)
-    ) > -1
-);
+// const hasNotLoadedOrNotOpen = computed<boolean>(
+//   () =>
+//     fullTree.value.findIndex(
+//       (folder: FolderInfo) => folder.has_nested && (!folder.loaded || !folder.is_open)
+//     ) > -1
+// );
 
 const close = () => {
   emit('close');

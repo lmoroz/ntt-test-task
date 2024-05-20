@@ -13,7 +13,7 @@ RUN go build -a -installsuffix cgo -o swagger .
 FROM scratch AS runtime
 COPY --from=build /go/src/swagger ./
 COPY .env .
-COPY data.json .
+COPY backend/data.json .
 
 ARG SERVER_PORT=8080
 
