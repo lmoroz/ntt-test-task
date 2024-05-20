@@ -27,7 +27,7 @@
   },
   "overrides": [
     {
-      "files": ["*.vue"],
+      "files": ["*.vue", "*.ts"],
       "parser": "vue-eslint-parser",
       "parserOptions": {
         "project": "./tsconfig.json"
@@ -48,7 +48,9 @@
   ],
   "ignorePatterns": [
     "node_modules",
-    "build"
+    "build",
+    "components.d.ts",
+    "vite-env.d.ts"
   ],
   "rules": {
     "arrow-body-style": "off",

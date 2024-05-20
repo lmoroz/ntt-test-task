@@ -1,31 +1,47 @@
-// import { createApp } from 'vue'
+// import { createApp } from 'vue';
 //
-// import 'vuetify/styles'
-// import { createVuetify } from 'vuetify'
-// import * as components from 'vuetify/components'
-// import * as directives from 'vuetify/directives'
+// import 'vuetify/styles';
+// import { createVuetify } from 'vuetify';
+// import * as components from 'vuetify/components';
+// import * as directives from 'vuetify/directives';
 //
 // // Components
-// import App from './App.vue'
+// import App from './App.vue';
 //
 // const vuetify = createVuetify({
-//     components,
-//     directives,
-// })
+//   components,
+//   directives,
+// });
 //
-// createApp(App).use(vuetify).mount('#app')
-
-// Plugins
-import { registerPlugins } from '@/plugins'
-
-// Components
-import App from './App.vue'
+// createApp(App).use(vuetify).mount('#app');
 
 // Composables
-import { createApp } from 'vue'
+import { createApp } from 'vue';
 
-const app = createApp(App)
+// vuetify
+import 'vuetify/styles';
 
-registerPlugins(app)
+// Plugins
+import { registerPlugins } from '@/plugins';
 
-app.mount('#app')
+// Components
+import App from './App.vue';
+
+const app = createApp(App);
+registerPlugins(app);
+app.mount('#app');
+
+// // Plugins
+// import { registerPlugins } from '@/plugins';
+//
+// // Components
+// import App from './App.vue';
+//
+// // Composables
+// import { createApp } from 'vue';
+//
+// const app = createApp(App);
+//
+// registerPlugins(app);
+//
+// app.mount('#app');
