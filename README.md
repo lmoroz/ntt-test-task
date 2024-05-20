@@ -2,8 +2,8 @@
 
 ### Frontend: Vue 3 + TypeScript + Vite + Vuetify
 ### Backend: Golang 1.22 + PostgreSQL 16
-### Спецификация Open API: http://swagger.ubiz.ru  
 ### Пример рабочего проекта: http://193.107.238.41
+### Спецификация Open API: http://193.107.238.41/swagger/  
   
 ***
   
