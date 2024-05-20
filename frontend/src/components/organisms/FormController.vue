@@ -33,12 +33,11 @@ import { ref, watch, provide } from 'vue';
 import { useApi } from '@/composables/useApi';
 const { apiState, getFolderInfoByPath, getFoldersByPath } = useApi(); // apiData, loading, error
 import { useStore } from '@/composables/useStore';
-import { VTextField } from 'vuetify/components';
 const { state, setPath, setSelected, resetSelected } = useStore();
+import { VTextField } from 'vuetify/components';
 
-const input = ref<InstanceType<typeof VTextField>>();
+const input = ref<InstanceType<typeof VTextField> | null>(null);
 const tree = ref<NestedFolders>([] as NestedFolders);
-const openAll = ref<boolean>(false);
 const showTree = ref<boolean>(false);
 const parentFolderId = ref<FolderId | null>(null);
 
@@ -84,7 +83,6 @@ const closeAll = (selectedIndex: number) => {
 const openCloseFolder = (folder: FolderInfo) => {
   const selectedIndex = tree.value.findIndex(el => el.id === folder.id);
   if (folder.is_open) {
-    openAll.value = false;
     closeAll(selectedIndex);
     resetSelected();
   } else {
@@ -94,7 +92,7 @@ const openCloseFolder = (folder: FolderInfo) => {
   }
 };
 const esc = () => {
-  input.value.blur();
+  if (input.value) input.value.blur();
 };
 const changePath = (newValue: string) => {
   setPath(newValue);
@@ -114,7 +112,7 @@ const closeTree = () => {
   showTree.value = false;
   tree.value = [] as NestedFolders;
 };
-const openTree = async () => {
+const openTree = async (): Promise<void> => {
   const nextNotLoadedFolder = tree.value.findIndex(folder => folder.has_nested && !folder.loaded);
   const nextNotOpenFolder = tree.value.findIndex(folder => folder.has_nested && !folder.is_open);
   if (nextNotLoadedFolder !== -1) {
@@ -123,14 +121,15 @@ const openTree = async () => {
     return await openTree();
   } else if (nextNotOpenFolder !== -1) {
     apiState.loading = true;
-    openAll.value = true;
+    tree.value.forEach((folder, index) => {
+      if (folder.has_nested && !folder.is_open) tree.value[index].is_open = true;
+    });
     apiState.loading = false;
   }
   return;
 };
 
 provide('tree', tree);
-provide('openAll', openAll);
 provide('parentFolderId', parentFolderId);
 provide('openCloseFolder', openCloseFolder);
 </script>

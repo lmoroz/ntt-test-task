@@ -1,13 +1,9 @@
 <template>
   <div :class="['folders-tree', className]">
-    <template v-for="v in tree" :key="v.id">
-      <FolderItem :data="v" />
-    </template>
+    <FolderItem v-for="v in tree" :key="v.id" :data="v" />
   </div>
 </template>
 
 <script setup lang="ts">
-import { defineProps } from 'vue';
-
 defineProps<{ tree: NestedFolders; className?: string }>();
 </script>

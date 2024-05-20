@@ -43,25 +43,36 @@ paths:
                 $ref: '#/components/schemas/Folders'
         '400':
           description: Invalid input
-  /folders/tree:
-    get:
+  /folder/get:
+    post:
       tags:
-        - folders
-      summary: Весь список папок для построения дерева
+        - folder
+      summary: Информация об одной папке по path
+      description: Путь передается в теле запроса в формате JSON как параметр `path`
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                path:
+                  type: string
+                  description: Путь папки, информацию ок торой нужно выбрать
       responses:
         '200':
           description: успешный запрос
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Folders'
+                $ref: '#/components/schemas/FolderInfo'
         '400':
           description: Invalid input
   /folder/{id}:
     get:
       tags:
         - folder
-      summary: Описание папки
+      summary: Информация об одной папке по ID
       description: В url указывается `id` папки
       parameters:
         - name: id
@@ -105,5 +116,7 @@ components:
         description:
           type: string
         has_nested:
+          type: boolean
+        is_open:
           type: boolean
 

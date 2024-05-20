@@ -77,7 +77,6 @@ const { apiState } = useApi(); // apiData, loading, error
 
 const parentFolderId = inject<Ref<FolderId | null>>('parentFolderId', ref(null));
 const fullTree = inject<Ref<NestedFolders>>('tree', ref([] as NestedFolders));
-const allIsOpened = inject<Ref<boolean>>('openAll', ref(false));
 
 const tree = computed<NestedFolders>(() =>
   parentFolderId.value !== null && Array.isArray(fullTree.value)
@@ -88,8 +87,9 @@ const emit = defineEmits<{ close: []; openAll: [] }>();
 const hasSelected = computed<boolean>(() => state.selectedFolder !== null);
 const hasNotLoadedOrNotOpen = computed<boolean>(
   () =>
-    fullTree.value.findIndex((folder: FolderInfo) => folder.has_nested && !folder.loaded) > -1 ||
-    !allIsOpened
+    fullTree.value.findIndex(
+      (folder: FolderInfo) => folder.has_nested && (!folder.loaded || !folder.is_open)
+    ) > -1
 );
 
 const close = () => {
